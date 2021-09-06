@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="single HTML page quiz" />
+        <meta name="author" content="unlikelysource.com" />
+        <title>Quiz</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            <div class="border-end bg-white" id="sidebar-wrapper">
+                <div class="sidebar-heading border-bottom bg-light">Questions</div>
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(01)">Question 01</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(02)">Question 02</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(03)">Question 03</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(04)">Question 04</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(05)">Question 05</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(06)">Question 06</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(07)">Question 07</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(08)">Question 08</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(09)">Question 09</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(10)">Question 10</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(11)">Question 11</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(12)">Question 12</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(13)">Question 13</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(14)">Question 14</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(15)">Question 15</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(16)">Question 16</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(17)">Question 17</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(18)">Question 18</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(19)">Question 19</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(20)">Question 20</a>
+                </div>
+            </div>
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <div class="container-fluid">
+                        <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                                <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#!">Action</a>
+                                        <a class="dropdown-item" href="#!">Another action</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#!">Something else here</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Question 01 -->
+                <div class="container-fluid" id="q01" style="display:none;">
+                    <h1 class="mt-4">Question 1</h1>
+                    <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
+                    <p>
+                        Make sure to keep all page content within the
+                        <code>#page-content-wrapper</code>
+                        . The top navbar is optional, and just for demonstration. Just create an element with the
+                        <code>#sidebarToggle</code>
+                        ID which will toggle the menu when clicked.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- Functions -->
+        <script>
+        $(document).ready(function () {
+            show_one(1);
+        });
+        function show_one(id)
+        {
+            var max=20;     // change this according to your max # questions
+            var key=0;
+            // hide everything
+            for (x = 1; x <= max; x++) {
+                key = (x < 10) ? '0' + x : '' + x;
+                key = '#q' + key;
+                $(key).hide();
+                console.log(key);
+            }
+            // show id selected
+            key = (id < 10) ? '0' + id : '' + id;
+            key = '#q' + id;
+            $(key).hide();
+            console.log(key);
+        }
+        </script>
+    </body>
+</html>
