@@ -17,26 +17,9 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">Questions</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(01)">Question 01</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(02)">Question 02</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(03)">Question 03</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(04)">Question 04</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(05)">Question 05</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(06)">Question 06</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(07)">Question 07</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(08)">Question 08</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(09)">Question 09</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(10)">Question 10</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(11)">Question 11</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(12)">Question 12</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(13)">Question 13</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(14)">Question 14</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(15)">Question 15</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(16)">Question 16</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(17)">Question 17</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(18)">Question 18</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(19)">Question 19</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(20)">Question 20</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(1)">Question 01</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(2)">Question 02</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(3)">Question 03</a>
                 </div>
             </div>
             <!-- Page content wrapper-->
@@ -65,16 +48,41 @@
                 </nav>
 
                 <!-- Question 01 -->
-                <div class="container-fluid" id="q01" style="display:none;">
+                <div class="container-fluid" id="q1">
                     <h1 class="mt-4">Question 1</h1>
-                    <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-                    <p>
-                        Make sure to keep all page content within the
-                        <code>#page-content-wrapper</code>
-                        . The top navbar is optional, and just for demonstration. Just create an element with the
-                        <code>#sidebarToggle</code>
-                        ID which will toggle the menu when clicked.
-                    </p>
+                    <p>What is the meaning of life, the universe and everything?</p>
+                    <hr />
+                    <br /><input type="radio" name="r1" value="1"> 1
+                    <br /><input type="radio" name="r1" value="2"> 2
+                    <br /><input type="radio" name="r1" value="3"> 3
+                    <br /><input type="radio" name="r1" value="4"> 42
+                    <br /><button onclick="answer_me_radio(1)">Submit</button>
+                </div>
+
+                <!-- Question 02 -->
+                <div class="container-fluid" id="q2" style="display:none;">
+                    <h1 class="mt-4">Question 2</h1>
+                    <p>Which are examples of animals? (choose 2)</p>
+                    <hr />
+                    <br /><input type="checkbox" name="r2" value="1"> Flower
+                    <br /><input type="checkbox" name="r2" value="2"> House
+                    <br /><input type="checkbox" name="r2" value="3"> Dog
+                    <br /><input type="checkbox" name="r2" value="4"> Cat
+                    <br /><input type="checkbox" name="r2" value="5"> None of the Above
+                    <br /><button onclick="answer_me_check(2)">Submit</button>
+                </div>
+
+                <!-- Question 03 -->
+                <div class="container-fluid" id="q3" style="display:none;">
+                    <h1 class="mt-4">Question 3</h1>
+                    <p>What is the capital of Thailand?</p>
+                    <hr />
+                    <br /><input type="text" name="r3" value="">
+                    <br /><button onclick="answer_me_text(3)">Submit</button>
+                </div>
+
+                <!-- Response -->
+                <div class="container-fluid" id="response">
                 </div>
 
             </div>
@@ -83,12 +91,39 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <!-- Answers -->
+        <script>
+        var response = {
+            "q1" : {
+                1 : "Wrong Answer",
+                2 : "Wrong Answer",
+                3 : "Wrong Answer",
+                4 : "Correct!",
+            },
+            "q2" : {
+                1 : "Wrong Answer",
+                2 : "Wrong Answer",
+                3 : "Correct!",
+                4 : "Correct!",
+                5 : "Wrong Answer",
+            },
+            "q3" : [ "Bangkok","Krungthep" ],
+            "q4" : {},
+            "q5" : {},
+            "q6" : {},
+            "q7" : {},
+            "q8" : {},
+            "q9" : {},
+            "q10" : {},
+        };
+        </script>
         <!-- Functions -->
         <script>
         $(document).ready(function () {
             show_one(1);
+        });
+        $('#sidebarToggle').click(function () {
+            $('#sidebar-wrapper').toggle();
         });
         function show_one(id)
         {
@@ -96,16 +131,56 @@
             var key=0;
             // hide everything
             for (x = 1; x <= max; x++) {
-                key = (x < 10) ? '0' + x : '' + x;
-                key = '#q' + key;
+                key = '#q' + x;
                 $(key).hide();
-                console.log(key);
             }
             // show id selected
-            key = (id < 10) ? '0' + id : '' + id;
             key = '#q' + id;
-            $(key).hide();
+            $(key).show();
             console.log(key);
+            $('#response').html('Select answer and hit "Submit"');
+        }
+        function answer_me_radio(id)
+        {
+            key = 'q' + id;
+            ckey = 'r' + id;
+            user = $("input[name='" + ckey + "']:checked").val()
+            answer = response[key][user];
+            console.log(user,answer);
+            $('#response').html('');
+            $('#response').html(answer);
+        }
+        function answer_me_check(id)
+        {
+            key = 'q' + id;
+            ckey = 'r' + id;
+            out = '';
+            $("input[name='" + ckey + "']:checked").each(function (elem) {
+                num = $(this).val();
+                out += num + ' ' + response[key][num] + '<br />';
+                console.log(num);
+            });
+            $('#response').html('');
+            $('#response').html(out);
+        }
+        function answer_me_text(id)
+        {
+            out = '';
+            key = 'q' + id;
+            ckey = 'r' + id;
+            $("input[name='" + ckey + "']").each(function (elem) { user_ans = $(this).val(); });
+            sys_ans = response[key];
+            ok = $.inArray(user_ans, sys_ans);
+            if (ok >= 0) {
+                out = 'Correct!';
+            } else {
+                out = 'Wrong answer<br />';
+                out += 'Correct answer(s):<br />';
+                $.each(sys_ans, function(index, value) { out += value + '<br />'; });
+            }
+            $('#response').html('');
+            $('#response').html(out);
+            console.log(user_ans, sys_ans);
         }
         </script>
     </body>
