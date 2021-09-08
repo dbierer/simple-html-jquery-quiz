@@ -18,6 +18,10 @@ Input tags supported:
 * `checkbox`
 * `text`
 
+The `name` attribute for the set of input tags
+* must start with the letter `r`
+* must be followed by a number that matches the question number
+
 Make sure that the `onclick=""` attribute to the `submit` button for each question does the following:
 * Uses the correct function
   * Use `answer_me_radio` for `radio` buttons
@@ -30,9 +34,19 @@ So, for example, if it's question 3, and it's a set of checkboxes, program the `
 <br /><button onclick="answer_me_check(3)">Submit</button>
 ```
 
+In the JavaScript function `show_one()` you **must** set the variable `max` to the number of questions you have.
+```
+<script>
+function show_one(id)
+{
+    var max=20;
+    // other JavaScript not shown
+}
+```
+
+Look at `index.html` for examples of how to configure your quiz.
 
 ## Add Answers
 To add answers, go to the script block `<!-- Answers -->` and start adding to `var response = [`.
 In the `index.html` file you'll find examples of all three types of questions and answers.
-
 

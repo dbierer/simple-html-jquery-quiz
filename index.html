@@ -47,19 +47,22 @@
                     </div>
                 </nav>
 
-                <!-- Question 01 -->
+                <!-- Question -->
+                <!-- the 'id' attribute must start with 'q' and is followed by the question number -->
                 <div class="container-fluid" id="q1">
                     <h1 class="mt-4">Question 1</h1>
                     <p>What is the meaning of life, the universe and everything?</p>
                     <hr />
+                    <!-- the 'name' attribute starts with 'r' and is followed by the question number -->
                     <br /><input type="radio" name="r1" value="1"> 1
                     <br /><input type="radio" name="r1" value="2"> 2
                     <br /><input type="radio" name="r1" value="3"> 3
                     <br /><input type="radio" name="r1" value="4"> 42
+                    <!-- the value supplied to the "onclick()" function must match the question number -->
                     <br /><button onclick="answer_me_radio(1)">Submit</button>
                 </div>
 
-                <!-- Question 02 -->
+                <!-- Question -->
                 <div class="container-fluid" id="q2" style="display:none;">
                     <h1 class="mt-4">Question 2</h1>
                     <p>Which are examples of animals? (choose 2)</p>
@@ -72,7 +75,7 @@
                     <br /><button onclick="answer_me_check(2)">Submit</button>
                 </div>
 
-                <!-- Question 03 -->
+                <!-- Question -->
                 <div class="container-fluid" id="q3" style="display:none;">
                     <h1 class="mt-4">Question 3</h1>
                     <p>What is the capital of Thailand?</p>
@@ -85,6 +88,9 @@
                 <div class="container-fluid" id="response">
                 </div>
 
+                <!-- Number of questions: very important to set this! -->
+                <input type="hidden" name="max_ques" value="20" />
+
             </div>
         </div>
         <!-- jQuery -->
@@ -93,19 +99,20 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Answers -->
         <script>
+        // use JSON syntax: no trailing comma in last answer in a { block }
         var response = {
             "q1" : {
                 1 : "Wrong Answer",
                 2 : "Wrong Answer",
                 3 : "Wrong Answer",
-                4 : "Correct!",
+                4 : "Correct!"
             },
             "q2" : {
                 1 : "Wrong Answer",
                 2 : "Wrong Answer",
                 3 : "Correct!",
                 4 : "Correct!",
-                5 : "Wrong Answer",
+                5 : "Wrong Answer"
             },
             "q3" : [ "Bangkok","Krungthep" ],
             "q4" : {},
@@ -125,63 +132,8 @@
         $('#sidebarToggle').click(function () {
             $('#sidebar-wrapper').toggle();
         });
-        function show_one(id)
-        {
-            var max=20;     // change this according to your max # questions
-            var key=0;
-            // hide everything
-            for (x = 1; x <= max; x++) {
-                key = '#q' + x;
-                $(key).hide();
-            }
-            // show id selected
-            key = '#q' + id;
-            $(key).show();
-            console.log(key);
-            $('#response').html('Select answer and hit "Submit"');
-        }
-        function answer_me_radio(id)
-        {
-            key = 'q' + id;
-            ckey = 'r' + id;
-            user = $("input[name='" + ckey + "']:checked").val()
-            answer = response[key][user];
-            console.log(user,answer);
-            $('#response').html('');
-            $('#response').html(answer);
-        }
-        function answer_me_check(id)
-        {
-            key = 'q' + id;
-            ckey = 'r' + id;
-            out = '';
-            $("input[name='" + ckey + "']:checked").each(function (elem) {
-                num = $(this).val();
-                out += num + ' ' + response[key][num] + '<br />';
-                console.log(num);
-            });
-            $('#response').html('');
-            $('#response').html(out);
-        }
-        function answer_me_text(id)
-        {
-            out = '';
-            key = 'q' + id;
-            ckey = 'r' + id;
-            $("input[name='" + ckey + "']").each(function (elem) { user_ans = $(this).val(); });
-            sys_ans = response[key];
-            ok = $.inArray(user_ans, sys_ans);
-            if (ok >= 0) {
-                out = 'Correct!';
-            } else {
-                out = 'Wrong answer<br />';
-                out += 'Correct answer(s):<br />';
-                $.each(sys_ans, function(index, value) { out += value + '<br />'; });
-            }
-            $('#response').html('');
-            $('#response').html(out);
-            console.log(user_ans, sys_ans);
-        }
         </script>
+        <!-- Functions -->
+        <script src="js/simple-html-quiz.js"></script>
     </body>
 </html>
