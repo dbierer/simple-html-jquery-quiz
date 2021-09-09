@@ -9,44 +9,95 @@ Features:
 * Multiple choice multiple answer
 * Fill in the blank
 
-## Add Questions
-To add questions, simply create a `<div>` tag with an `id` attribute of `q1`, `q2`, etc.
-Inside the div tag you can put any HTML you want.
+## Add Questions and Answers
+Copy the prototype `index.html` file along with `js/simple-html-quiz.js` into your project folder.
+Look for the `<script>` tag that defines `var quiz = { xxx }`
+Use `JSON` syntax to add questions in the order desired.
 
-Input tags supported:
-* `radio`
-* `checkbox`
-* `text`
-
-The `name` attribute for the set of input tags
-* must start with the letter `r`
-* must be followed by a number that matches the question number
-
-Make sure that the `onclick=""` attribute to the `submit` button for each question does the following:
-* Uses the correct function
-  * Use `answer_me_radio` for `radio` buttons
-  * Use `answer_me_check` for `checkbox`
-  * Use `answer_me_text` for `text` inputs
-* Make sure you send the correct `id` value for that question.
-
-So, for example, if it's question 3, and it's a set of checkboxes, program the `submit` button like this:
-```
-<br /><button onclick="answer_me_check(3)">Submit</button>
-```
-
-In the JavaScript function `show_one()` you **must** set the variable `max` to the number of questions you have.
+### Multiple Choice Single Answer Questions
+HTML _radio_ buttons are used for this type of question.
+Here's an example of how a multiple choice single answer button question might appear:
 ```
 <script>
-function show_one(id)
-{
-    var max=20;
-    // other JavaScript not shown
+var quiz = {
+    "choose_class" : "list-group-item list-group-item-action list-group-item-light p-3",
+    "div_class" : "container-fluid",
+    "questions" : {
+        1 : {
+            "title" : "Question 1",
+            "type"  : "radio",
+            "question"  : "What is the meaning of life, the universe and everything?",
+            "answers" : {
+                1 : "0",
+                2 : "1",
+                3 : "99",
+                4 : "42"
+            }
+        },
+    // etc.
+    }
 }
+</script>
+
 ```
 
-Look at `index.html` for examples of how to configure your quiz.
+### Multiple Choice Multiple Answer Questions
+HTML _checkbox_ fields are used for this type of question.
+Here's an example of how a multiple choice multiple answer button question might appear:
+```
+<script>
+var quiz = {
+    "choose_class" : "list-group-item list-group-item-action list-group-item-light p-3",
+    "div_class" : "container-fluid",
+    "questions" : {
+        // some questions not shown
+        1 : { /* not shown */ },
+        2 : {
+            "title" : "Question 2",
+            "type"  : "checkbox",
+            "question"  : "Which are examples of animals? (choose 2)",
+            "answers" : {
+                1 : "Flower",
+                2 : "House",
+                3 : "Dog",
+                4 : "Cat",
+                5 : "None of the Above"
+            }
+        },
+    // etc.
+    }
+}
+</script>
 
-## Add Answers
-To add answers, go to the script block `<!-- Answers -->` and start adding to `var response = [`.
-In the `index.html` file you'll find examples of all three types of questions and answers.
+```
+
+### Fill-in-the-blank Questions
+HTML _text_ fields are used for this type of question.
+Here's an example of how a fill-in-the-blank question might appear:
+```
+<script>
+var quiz = {
+    "choose_class" : "list-group-item list-group-item-action list-group-item-light p-3",
+    "div_class" : "container-fluid",
+    "questions" : {
+        // some questions not shown
+        1 : { /* not shown */ },
+        2 : { /* not shown */ },
+        3 : {
+            "title" : "Question 3",
+            "type"  : "text",
+            "question"  : "What is the capital of Thailand?",
+            "answers" : { "answer" : "" }
+        }
+
+    // etc.
+    }
+}
+</script>
+
+```
+
+## Adding Answers
+
+Look at prototype `index.html` for examples of how to configure your quiz.
 

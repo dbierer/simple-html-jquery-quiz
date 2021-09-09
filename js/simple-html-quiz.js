@@ -6,37 +6,35 @@
 function show_one(id)
 {
     // change this according to your max # questions
-    var max=20;
     var key=0;
     // hide everything
-    for (x = 1; x <= max; x++) {
+    $.each(quiz.questions, function (x, val) {
         key = '#q' + x;
         $(key).hide();
-    }
+    });
     // show id selected
     key = '#q' + id;
     $(key).show();
     console.log(key);
-    $('#response').html('Select answer and hit "Submit"');
+    $('#response').html('Select or fill in answer and hit "Submit"');
 }
 function answer_me_radio(id)
 {
     key = 'q' + id;
     ckey = 'r' + id;
     user = $("input[name='" + ckey + "']:checked").val()
-    answer = response[key][user];
-    console.log(user,answer);
+    answer = quiz.response[id][user];
     $('#response').html('');
     $('#response').html(answer);
 }
-function answer_me_check(id)
+function answer_me_checkbox(id)
 {
     key = 'q' + id;
     ckey = 'r' + id;
     out = '';
     $("input[name='" + ckey + "']:checked").each(function (elem) {
         num = $(this).val();
-        out += num + ' ' + response[key][num] + '<br />';
+        out += num + ' ' + quiz.response[id][num] + '<br />';
         console.log(num);
     });
     $('#response').html('');
@@ -48,7 +46,7 @@ function answer_me_text(id)
     key = 'q' + id;
     ckey = 'r' + id;
     $("input[name='" + ckey + "']").each(function (elem) { user_ans = $(this).val(); });
-    sys_ans = response[key];
+    sys_ans = quiz.response[id];
     ok = $.inArray(user_ans, sys_ans);
     if (ok >= 0) {
         out = 'Correct!';
@@ -60,4 +58,31 @@ function answer_me_text(id)
     $('#response').html('');
     $('#response').html(out);
     console.log(user_ans, sys_ans);
+}
+function build_quiz(quiz)
+{
+    chooser = '';
+    display = '';
+    total = 0;
+    $.each(quiz.questions, function(key1, val1) {
+        chooser += '<a class="' + quiz.choose_class + '" onclick="show_one(' + key1 + ')">' + val1.title + '</a>' + "\n";
+        display += '<div class="' + quiz.div_class + '" id="q' + key1 + '">' + "\n";
+        display += '<h1>' + val1.title + '</h1>' + "\n";
+        display += '<p>' + val1.question + '</p>' + "\n";
+        display += '<hr />' + "\n";
+        $.each(val1.answers, function(key2, val2) {
+            display += '<br />';
+            display += '<input type="' + val1.type + '" name="r' + key1 + '" value="' + key2 + '" />';
+            display += '&nbsp;' + val2 + "\n";
+        });
+        display += '<br />';
+        display += '<button onclick="answer_me_' + val1.type + '(' + key1 + ')">Submit</button>' + "\n";
+        display += '&nbsp;&nbsp;';
+        next_key = key1 * 1 + 1;
+        display += '<button onclick="show_one(' + next_key + ')">Next</button>' + "\n";
+        display += '</div>' + "\n";
+        total++;
+    });
+    $('#question_chooser').html(chooser);
+    $('#question_display').html(display);
 }

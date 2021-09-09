@@ -17,9 +17,16 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">Questions</div>
                 <div class="list-group list-group-flush">
+
+                    <!-- Do not touch this! -->
+                    <div id="question_chooser"></div>
+
+                    <!-- Example Output
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(1)">Question 01</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(2)">Question 02</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" onclick="show_one(3)">Question 03</a>
+                    -->
+
                 </div>
             </div>
             <!-- Page content wrapper-->
@@ -47,22 +54,21 @@
                     </div>
                 </nav>
 
-                <!-- Question -->
-                <!-- the 'id' attribute must start with 'q' and is followed by the question number -->
+                <!-- Do not touch this! -->
+                <div id="question_display"></div>
+
+                <!-- Example Output
                 <div class="container-fluid" id="q1">
                     <h1 class="mt-4">Question 1</h1>
                     <p>What is the meaning of life, the universe and everything?</p>
                     <hr />
-                    <!-- the 'name' attribute starts with 'r' and is followed by the question number -->
                     <br /><input type="radio" name="r1" value="1"> 1
                     <br /><input type="radio" name="r1" value="2"> 2
                     <br /><input type="radio" name="r1" value="3"> 3
                     <br /><input type="radio" name="r1" value="4"> 42
-                    <!-- the value supplied to the "onclick()" function must match the question number -->
                     <br /><button onclick="answer_me_radio(1)">Submit</button>
                 </div>
 
-                <!-- Question -->
                 <div class="container-fluid" id="q2" style="display:none;">
                     <h1 class="mt-4">Question 2</h1>
                     <p>Which are examples of animals? (choose 2)</p>
@@ -75,7 +81,6 @@
                     <br /><button onclick="answer_me_check(2)">Submit</button>
                 </div>
 
-                <!-- Question -->
                 <div class="container-fluid" id="q3" style="display:none;">
                     <h1 class="mt-4">Question 3</h1>
                     <p>What is the capital of Thailand?</p>
@@ -83,13 +88,11 @@
                     <br /><input type="text" name="r3" value="">
                     <br /><button onclick="answer_me_text(3)">Submit</button>
                 </div>
+                 -->
 
                 <!-- Response -->
-                <div class="container-fluid" id="response">
-                </div>
-
-                <!-- Number of questions: very important to set this! -->
-                <input type="hidden" name="max_ques" value="20" />
+                <!-- Do not touch this! -->
+                <div class="container-fluid" id="response"></div>
 
             </div>
         </div>
@@ -100,40 +103,68 @@
         <!-- Answers -->
         <script>
         // use JSON syntax: no trailing comma in last answer in a { block }
-        var response = {
-            "q1" : {
-                1 : "Wrong Answer",
-                2 : "Wrong Answer",
-                3 : "Wrong Answer",
-                4 : "Correct!"
+        var quiz = {
+            "choose_class" : "list-group-item list-group-item-action list-group-item-light p-3",
+            "div_class" : "container-fluid",
+            "questions" : {
+                1 : {
+                    "title" : "Question 1",
+                    "type"  : "radio",
+                    "question"  : "What is the meaning of life, the universe and everything?",
+                    "answers" : {
+                        1 : "0",
+                        2 : "1",
+                        3 : "99",
+                        4 : "42"
+                    }
+                },
+                2 : {
+                    "title" : "Question 2",
+                    "type"  : "checkbox",
+                    "question"  : "Which are examples of animals? (choose 2)",
+                    "answers" : {
+                        1 : "Flower",
+                        2 : "House",
+                        3 : "Dog",
+                        4 : "Cat",
+                        5 : "None of the Above"
+                    }
+                },
+                3 : {
+                    "title" : "Question 3",
+                    "type"  : "text",
+                    "question"  : "What is the capital of Thailand?",
+                    "answers" : { "answer" : "" }
+                }
             },
-            "q2" : {
-                1 : "Wrong Answer",
-                2 : "Wrong Answer",
-                3 : "Correct!",
-                4 : "Correct!",
-                5 : "Wrong Answer"
-            },
-            "q3" : [ "Bangkok","Krungthep" ],
-            "q4" : {},
-            "q5" : {},
-            "q6" : {},
-            "q7" : {},
-            "q8" : {},
-            "q9" : {},
-            "q10" : {},
+            "response" : {
+                1 : {
+                    1 : "Wrong Answer",
+                    2 : "Wrong Answer",
+                    3 : "Wrong Answer",
+                    4 : "Correct!"
+                },
+                2 : {
+                    1 : "Wrong Answer",
+                    2 : "Wrong Answer",
+                    3 : "Correct!",
+                    4 : "Correct!",
+                    5 : "Wrong Answer"
+                },
+                3 : [ "Bangkok","Krungthep" ]
+            }
         };
         </script>
         <!-- Functions -->
+        <script src="js/simple-html-quiz.js"></script>
         <script>
         $(document).ready(function () {
+            build_quiz(quiz);
             show_one(1);
         });
         $('#sidebarToggle').click(function () {
             $('#sidebar-wrapper').toggle();
         });
         </script>
-        <!-- Functions -->
-        <script src="js/simple-html-quiz.js"></script>
     </body>
 </html>
